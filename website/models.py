@@ -1,12 +1,12 @@
 from . import db
 from flask_login import UserMixin
-from sqlalchemy.sql import func
+from flask_sqlalchemy import SQLAlchemy
 
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(150), unique = True)
     description = db.Column(db.String(1000))
-    category = db.Column(db.enum("GPU","CPU","Motherboard","RAM","Cooling","SSD","HDD","Frame","Power"))
+    category = db.Column(db.Enum("GPU","CPU","Motherboard","RAM","Cooling","SSD","HDD","Frame","Power"))
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key = True)
