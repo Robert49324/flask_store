@@ -7,5 +7,8 @@ views = Blueprint("views",__name__)
 def home():
     return render_template("home.html", user=current_user)
 
+@views.route("/catalog", methods=['GET','POST'])
+def catalog():
+    return render_template("catalog.html",user=current_user)
 
 
