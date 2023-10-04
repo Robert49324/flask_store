@@ -3,5 +3,10 @@
 {%block title%}Главная{%endblock%}
 
 {% block content%}
-    
+    {% for data in products %}
+        <h4>{{data.name}}</h4>
+        <h4>{{data.description}}</h4>
+        <h4>{{data.category}}</h4>
+        <h4>{{data.price}}</h4>
+    {% endfor%}
 {% endblock%}

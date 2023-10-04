@@ -1,0 +1,56 @@
+{% extends "base.html" %} {%block title%}Добавление товара{% endblock %}
+
+{% block content %}
+<div class="container-sm">
+<form method="POST">
+  <h3 align="center">Имя товара</h3>
+  <div class="form-group">
+    <label for="name">Имя товара</label>
+    <input
+      type="name"
+      class="form-control"
+      id="name"
+      name="name"
+      placeholder="Введите название товара"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="description">Описание</label>
+    <input
+      type="text"
+      class="form-control"
+      id="description"
+      name="description"
+      placeholder="Введите описание"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="price">Цена</label>
+    <input
+      type="price"
+      class="form-control"
+      id="price"
+      name="price"
+      placeholder="Введите цену"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="category">Категория</label>
+    <input
+      type="category"
+      class="form-control"
+      id="category"
+      name="category"
+      placeholder="Введите категорию(GPU,CPU,Motherboard,RAM,Cooling,SSD,HDD,Frame,Power)"
+    />
+  </div>
+  
+
+  <br />
+  <button type="submit" class="btn btn-dark">Добавить товар</button>
+</form>
+</div>
+{% endblock %}

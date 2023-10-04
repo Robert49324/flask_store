@@ -6,6 +6,7 @@ class Product(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(150), unique = True)
     description = db.Column(db.String(1000))
+    price = db.Column(db.Integer)
     category = db.Column(db.Enum("GPU","CPU","Motherboard","RAM","Cooling","SSD","HDD","Frame","Power"))
 
 class User(db.Model, UserMixin):
