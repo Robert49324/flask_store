@@ -33,8 +33,10 @@ def admin():
             flash("Слишком короткое описание", category='error')
         elif category not in ("GPU","CPU","Motherboard","RAM","Cooling","SSD","HDD","Frame","Power"):
             flash("Неверная категория", category="error")
-        elif price <= 0:
+        elif int(price) <= 0:
             flash("Слишком низкая цена", category="error")
+        elif len(description) > 1000:
+            flash("Слишком длинное описание", category="error")
         else:
             new_product = Product(name=name,description=description,category=category,price=price)
             db.session.add(new_product)

@@ -1,12 +1,18 @@
-{% extends "base.html" %}
-
-{%block title%}Главная{%endblock%}
-
-{% block content%}
-    {% for data in products %}
-        <h4>{{data.name}}</h4>
-        <h4>{{data.description}}</h4>
-        <h4>{{data.category}}</h4>
-        <h4>{{data.price}}</h4>
-    {% endfor%}
-{% endblock%}
+{% extends "base.html" %} 
+{%block title%}Главная{%endblock%} {% block content%}
+{% for data in products %}
+<div class="card m-3 p-2">
+  <div class="row g-0">
+    <div class="col-md-2">
+      <img src="static/LOGO.png" class="img-fluid rounded-start" alt="..." />
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{data.name}}</h5>
+        <p class="card-text">{{data.description}}</p>
+        <a href="#" class="btn btn-primary">Купить</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor%} {% endblock%}
