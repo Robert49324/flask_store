@@ -1,2 +1,22 @@
-{% extends "base.html" %}
-{%block title%}Каталог{%endblock%}
+{% extends "base.html"%} 
+{% block title%}{{title}}{%endblock%}
+{%block content%}
+{% for data in products %}
+<div class="container-md">
+  <div class="card m-3 p-2">
+    <div class="row g-0">
+      <div class="col-md-2">
+        <img src="https://t1.gstatic.com/licensed-image?q=tbn:ANd9GcRlaTfscmXmzZ_BvFjCsR2EY4CJFiUz_MGC804rZi8MC4uYNJC5C481YbD5oCmwMsvX" class="img-fluid rounded-start" alt="..." />
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{data.name}}</h5>
+          <p class="card-text">{{data.description}}</p>
+          <a href="#" class="btn btn-primary" id={{data.id}}>Купить</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor%} 
+{%endblock%}

@@ -44,19 +44,17 @@
                 Каталог
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Видеокарты</a></li>
-                <li><a class="dropdown-item" href="#">Процессоры</a></li>
-                <li><a class="dropdown-item" href="#">Материнские платы</a></li>
-                <li>
-                  <a class="dropdown-item" href="#">Оперативная память</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">Системы охлаждения</a>
-                </li>
-                <li><a class="dropdown-item" href="#">SSD</a></li>
-                <li><a class="dropdown-item" href="#">Жесткие диски</a></li>
-                <li><a class="dropdown-item" href="#">Корпуса</a></li>
-                <li><a class="dropdown-item" href="#">Блоки питания</a></li>
+                <form method="POST">
+                <input type="submit" name="button" value="Видеокарты" class="dropdown-item">
+                <input type="submit" name="button" value="Процессоры" class="dropdown-item">
+                <input type="submit" name="button" value="Материнские платы" class="dropdown-item">
+                <input type="submit" name="button" value="Оперативная память" class="dropdown-item">
+                <input type="submit" name="button" value="Системы охлаждения" class="dropdown-item">
+                <input type="submit" name="button" value="SSD" class="dropdown-item">
+                <input type="submit" name="button" value="Жесткие диски" class="dropdown-item">
+                <input type="submit" name="button" value="Корпуса" class="dropdown-item">
+                <input type="submit" name="button" value="Блоки питания" class="dropdown-item">
+              </form>
               </ul>
             </li>
           </ul>
@@ -74,7 +72,7 @@
               {%if user.email == "admin@gmail.com"%}
               <li class="nav-item"><a class="nav-link" href="admin">БД</a></li>
               {%endif%}
-            <li class="nav-item"><a class="nav-link" href="catalog">Корзина</a></li>
+            <li class="nav-item"><a class="nav-link" href="cart">Корзина</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Избранное</a></li>
             <li class="nav-item">
               <a class="nav-link" href="logout">Выйти</a>

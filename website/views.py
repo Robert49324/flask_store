@@ -8,12 +8,44 @@ views = Blueprint("views",__name__)
 
 @views.route("/", methods=['GET','POST'])
 def home():
+    if request.method == 'POST':
+        if request.form["button"] == "Видеокарты":
+            data = Product.query.filter_by(category="GPU")
+            return render_template("catalog.html",products=data, user=current_user,title="Видеокарты")
+        elif request.form["button"] == "Процессоры":
+            data = Product.query.filter_by(category="CPU")
+            return render_template("catalog.html",products=data, user=current_user,title="Процессоры")
+        elif request.form["button"] == "Материнские платы":
+            data = Product.query.filter_by(category="Motherboard")
+            return render_template("catalog.html",products=data, user=current_user,title="Материнские платы")
+        elif request.form["button"] == "Оперативная память":
+            data = Product.query.filter_by(category="RAM")
+            return render_template("catalog.html",products=data, user=current_user,title="Оперативная память")
+        elif request.form["button"] == "Системы охлаждения":
+            data = Product.query.filter_by(category="Cooling")
+            return render_template("catalog.html",products=data, user=current_user,title="Системы охлаждения")
+        elif request.form["button"] == "SSD":
+            data = Product.query.filter_by(category="SSD")
+            return render_template("catalog.html",products=data, user=current_user,title="SSD")
+        elif request.form["button"] == "Жесткие диски":
+            data = Product.query.filter_by(category="HDD")
+            return render_template("catalog.html",products=data, user=current_user,title="Жесткие диски")
+        elif request.form["button"] == "Корпуса":
+            data = Product.query.filter_by(category="Frame")
+            return render_template("catalog.html",products=data, user=current_user,title="Корпуса")
+        elif request.form["button"] == "Блоки питания":
+            data = Product.query.filter_by(category="Power")
+            return render_template("catalog.html",products=data, user=current_user,title="Блоки питания")
     data = Product.query.all()
     return render_template("home.html", products=data, user=current_user)
 
 @views.route("/catalog", methods=['GET','POST'])
 def catalog():
-    return render_template("catalog.html",user=current_user)
+    return render_template("catalog.html")
+    
+@views.route("/cart", methods=['GET','POST'])
+def cart():
+    return render_template("cart.html",user=current_user)
 
 @views.route("/admin", methods=['GET','POST'])
 def admin():
