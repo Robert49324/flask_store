@@ -14,7 +14,9 @@
         <div class="card-body">
           <h5 class="card-title">{{data.name}}</h5>
           <p class="card-text">{{data.description}}</p>
-          <a href="#" class="btn btn-dark">Купить</a>
+          <form action="/product" method="POST">
+            <button class="btn btn-dark" type="submit" name="product" value="{{  data.id  }}">Купить</button>
+          </form>
         </div>
       </div>
     </div>
