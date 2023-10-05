@@ -8,6 +8,11 @@ views = Blueprint("views",__name__)
 
 @views.route("/", methods=['GET','POST'])
 def home():
+    data = Product.query.all()
+    return render_template("home.html", products=data, user=current_user)
+    
+@views.route("/catalog", methods=['GET','POST'])
+def catalog():
     if request.method == 'POST':
         if request.form["button"] == "Видеокарты":
             data = Product.query.filter_by(category="GPU")
@@ -36,12 +41,7 @@ def home():
         elif request.form["button"] == "Блоки питания":
             data = Product.query.filter_by(category="Power")
             return render_template("catalog.html",products=data, user=current_user,title="Блоки питания")
-    data = Product.query.all()
-    return render_template("home.html", products=data, user=current_user)
-
-@views.route("/catalog", methods=['GET','POST'])
-def catalog():
-    return render_template("catalog.html")
+    return render_template("catalog.html", user=current_user, title="Каталог")
     
 @views.route("/cart", methods=['GET','POST'])
 def cart():
