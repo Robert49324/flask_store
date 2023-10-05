@@ -43,6 +43,11 @@ def catalog():
             return render_template("catalog.html",products=data, user=current_user,title="Блоки питания")
     return render_template("catalog.html", user=current_user, title="Каталог")
     
+@views.route("/product", methods=['GET','POST'])
+def product():
+    print(request.form["product"])
+    return render_template("product.html",user=current_user) 
+    
 @views.route("/cart", methods=['GET','POST'])
 def cart():
     return render_template("cart.html",user=current_user)
