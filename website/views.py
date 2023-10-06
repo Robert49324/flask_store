@@ -45,8 +45,8 @@ def catalog():
     
 @views.route("/product", methods=['GET','POST'])
 def product():
-    print(request.form["product"])
-    return render_template("product.html",user=current_user,id=request.form["product"]) 
+    product = Product.query.get(request.form["product"])
+    return render_template("product.html",user=current_user,product=product) 
     
 @views.route("/cart", methods=['GET','POST'])
 def cart():
