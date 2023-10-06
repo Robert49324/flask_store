@@ -46,7 +46,7 @@ def catalog():
 @views.route("/product", methods=['GET','POST'])
 def product():
     print(request.form["product"])
-    return render_template("product.html",user=current_user) 
+    return render_template("product.html",user=current_user,id=request.form["product"]) 
     
 @views.route("/cart", methods=['GET','POST'])
 def cart():
@@ -59,6 +59,7 @@ def admin():
         description = request.form.get('description')
         category = request.form.get('category')
         price = request.form.get('price')
+        picture = request.form.get('picture')
 
         user = Product.query.filter_by(name=name).first()
         
@@ -75,7 +76,7 @@ def admin():
         elif len(description) > 1000:
             flash("Слишком длинное описание", category="error")
         else:
-            new_product = Product(name=name,description=description,category=category,price=price)
+            new_product = Product(name=name,description=description,category=category,price=price, picture=picture)
             db.session.add(new_product)
             db.session.commit()
             flash('Товар добавлен', category='success')

@@ -8,6 +8,7 @@ class Product(db.Model):
     description = db.Column(db.String(1000))
     price = db.Column(db.Integer)
     category = db.Column(db.Enum("GPU","CPU","Motherboard","RAM","Cooling","SSD","HDD","Frame","Power"))
+    picture = db.Column(db.String(1000))
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key = True)
