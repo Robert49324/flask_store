@@ -59,8 +59,7 @@ def search():
         name = product.name
         if search.lower() in name.lower():
             matching_products.append(product)
-            return render_template("home.html", user=current_user, products = matching_products)
-    return render_template("home.html", user=current_user)
+    return render_template("home.html", user=current_user, products = matching_products)
     
 @views.route("/cart", methods=['GET','POST'])
 @login_required
