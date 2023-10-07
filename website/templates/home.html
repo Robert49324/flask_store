@@ -3,19 +3,25 @@
 <div class="container-md">
   <div class="card m-3 p-2">
     <div class="row g-0">
-      <div class="col-md-2 d-flex justify-content-center align-items-center">
-        <img
-          src="{{data.picture}}"
-          class="img-fluid rounded-start"
-          alt="..."
-        />
+      <div class="col-md-2">
+        <img src="{{data.picture}}" class="img-fluid rounded-start" alt="..." />
       </div>
       <div class="col-md-8">
         <div class="card-body">
           <h5 class="card-title">{{data.name}}</h5>
           <p class="card-text">{{data.description}}</p>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="d-flex justify-content-end align-items-center">
+          <h6 class="h5 m-3">{{data.price}} р.</h6>
           <form action="/product" method="POST">
-            <button class="btn btn-dark" type="submit" name="product" value="{{data.id}}">Купить</button>
+            <button
+              class="btn btn-dark"
+              type="submit"
+              name="product"
+              value="{{  data.id  }}"
+            > Купить</button>
           </form>
         </div>
       </div>

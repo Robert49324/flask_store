@@ -58,12 +58,14 @@
               </ul>
             </li>
           </ul>
-          <form class="d-flex flex-grow-1">
+          <form class="d-flex flex-grow-1" action="/search" method="POST">
             <input
               class="form-control me-2"
+              id="search"
+              name="search"
               type="search"
               placeholder="Поиск"
-              aria-label="Search"
+              aria-label="search"
             />
             <button class="btn btn-outline-success" type="submit">Поиск</button>
           </form>

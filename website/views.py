@@ -1,5 +1,5 @@
 from flask import render_template, Blueprint, request, flash, redirect, url_for
-from flask_login import current_user
+from flask_login import login_user, login_required, logout_user, current_user
 from . import db
 from .models import Product, User
 from flask_sqlalchemy import SQLAlchemy
@@ -46,13 +46,29 @@ def catalog():
 @views.route("/product", methods=['GET','POST'])
 def product():
     product = Product.query.get(request.form["product"])
-    return render_template("product.html",user=current_user,product=product) 
+    if product is not None:
+        return render_template("product.html",user=current_user,product=product)
+    return render_template("product.html",user=current_user, product=None) 
+    
+@views.route("/search", methods=['POST','GET'])
+def search():
+    search = request.form.get("search")
+    products = Product.query.all()
+    matching_products = []
+    for product in products:
+        name = product.name
+        if search.lower() in name.lower():
+            matching_products.append(product)
+            return render_template("home.html", user=current_user, products = matching_products)
+    return render_template("home.html", user=current_user)
     
 @views.route("/cart", methods=['GET','POST'])
+@login_required
 def cart():
     return render_template("cart.html",user=current_user)
 
 @views.route("/admin", methods=['GET','POST'])
+@login_required
 def admin():
     if request.method == 'POST':
         name = request.form.get('name')
