@@ -60,7 +60,13 @@ def search():
         if search.lower() in name.lower():
             matching_products.append(product)
     return render_template("home.html", user=current_user, products = matching_products)
-    
+
+@views.route("/buy", methods=['GET','POST'])
+@login_required
+def buy():
+    product = Product.query.get(request.form["product"])
+    return render_template("buy.html", user=current_user, product=product)
+
 @views.route("/cart", methods=['GET','POST'])
 @login_required
 def cart():

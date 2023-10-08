@@ -16,7 +16,13 @@
     </div>
     <div class="col-md-8">
       <h5 class="h5">{{product.description}}</h5>
+      <br/>
+      <h5 class="h5">{{product.price}} р.</h5>
+      <form action="/buy" method="POST">
+        <button class="btn btn-dark" type="submit" name="product" value="{{product.id}}">Купить</button>
+      </form>
     </div>
+    
   </div>
 </div>
 {% else %}
