@@ -67,6 +67,12 @@ def buy():
     product = Product.query.get(request.form["product"])
     return render_template("buy.html", user=current_user, product=product)
 
+@views.route("/confirm", methods=['GET','POST'])
+@login_required
+def confirm():
+    flash("Заказ оформлен!", category="success")
+    return redirect(url_for("views.home"))
+
 @views.route("/cart", methods=['GET','POST'])
 @login_required
 def cart():
