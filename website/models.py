@@ -23,6 +23,7 @@ class Basket(db.Model):
     
 class Order(db.Model):
     id = db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.String(150))
     address = db.Column(db.String(150))
     comment = db.Column(db.String(150))
     payment = db.Column(db.String(150))

@@ -62,5 +62,12 @@
   <br />
   <button type="submit" class="btn btn-dark">Добавить товар</button>
 </form>
+
+{% for order in orders %}
+  <h1>{{order.name}}</h1>
+  <h1>{{order.comment}}</h1>
+  <h1>{{order.address}}</h1>
+  <h1>{{order.payment}}</h1>
+{% endfor%}
 </div>
 {% endblock %}

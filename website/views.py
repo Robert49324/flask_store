@@ -74,7 +74,9 @@ def confirm():
     comment = request.form.get('comment')
     payment = request.form.get('payment')
     
-    new_order = Order(address=address, comment=comment, payment=payment)
+    prod = Product.query.filter_by(id=request.form["product"]).first()
+    prod_name = prod.name
+    new_order = Order(name=prod_name, address=address, comment=comment, payment=payment)
     db.session.add(new_order)
     db.session.commit()
     
@@ -116,5 +118,5 @@ def admin():
             db.session.commit()
             flash('Товар добавлен', category='success')
             return redirect(url_for('views.admin'))
-    order = Order.query.all()
-    return render_template("admin.html",user=current_user)
+    orders = Order.query.all()
+    return render_template("admin.html",user=current_user, orders=orders )
