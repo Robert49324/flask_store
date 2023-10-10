@@ -28,10 +28,10 @@ block content %}
     <br />
 
     <div class="btn-group">
-      <a href="#" class="btn btn-dark">Оплата наличными</a>
-      <a href="#" class="btn btn-dark">Оплата картой</a>
+      <button type="button" class="btn btn-dark " data-value="cash">Оплата наличными</button>
+      <button type="button" class="btn btn-dark" data-value="card">Оплата картой</button>
     </div>
-
+    <input type="hidden" id="paymentField" name="payment" value="" />
     <br />
 
     <br />
@@ -39,5 +39,19 @@ block content %}
     <button type="submit" class="btn btn-dark">Заказать</button>
   </form>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const submitBtn = document.getElementById("submitBtn");
+    const paymentButtons = document.querySelectorAll("[data-value]");
+
+    paymentButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        const paymentValue = this.getAttribute("data-value");
+        document.getElementById("paymentField").value = paymentValue;
+      });
+    });
+  });
+</script>
 {% endblock %}
  

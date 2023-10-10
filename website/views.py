@@ -1,7 +1,7 @@
 from flask import render_template, Blueprint, request, flash, redirect, url_for
 from flask_login import login_user, login_required, logout_user, current_user
 from . import db
-from .models import Product, User
+from .models import Product, User, Order
 from flask_sqlalchemy import SQLAlchemy
 
 views = Blueprint("views",__name__)
@@ -70,6 +70,14 @@ def buy():
 @views.route("/confirm", methods=['GET','POST'])
 @login_required
 def confirm():
+    address = request.form.get('address')
+    comment = request.form.get('comment')
+    payment = request.form.get('payment')
+    
+    new_order = Order(address=address, comment=comment, payment=payment)
+    db.session.add(new_order)
+    db.session.commit()
+    
     flash("Заказ оформлен!", category="success")
     return redirect(url_for("views.home"))
 

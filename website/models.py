@@ -19,3 +19,8 @@ class User(db.Model, UserMixin):
 class Basket():
     user_id = db.column(db.Integer)
     product_id = db.column(db.Integer)
+    
+class Order():
+    address = db.Column(db.String(150))
+    comment = db.Column(db.String(150))
+    payment = db.Column(db.String(150))
