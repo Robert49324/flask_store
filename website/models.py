@@ -16,11 +16,13 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(150))
     first_name = db.Column(db.String(150))
     
-class Basket():
-    user_id = db.column(db.Integer)
-    product_id = db.column(db.Integer)
+class Basket(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    user_id = db.Column(db.Integer,db.ForeignKey('user.id'))
+    product_id = db.Column(db.Integer,db.ForeignKey('product.id'))
     
-class Order():
+class Order(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
     address = db.Column(db.String(150))
     comment = db.Column(db.String(150))
     payment = db.Column(db.String(150))

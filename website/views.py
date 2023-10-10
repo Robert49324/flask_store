@@ -1,7 +1,7 @@
 from flask import render_template, Blueprint, request, flash, redirect, url_for
 from flask_login import login_user, login_required, logout_user, current_user
 from . import db
-from .models import Product, User, Order
+from .models import Product, Order, User
 from flask_sqlalchemy import SQLAlchemy
 
 views = Blueprint("views",__name__)
@@ -116,4 +116,5 @@ def admin():
             db.session.commit()
             flash('Товар добавлен', category='success')
             return redirect(url_for('views.admin'))
+    order = Order.query.all()
     return render_template("admin.html",user=current_user)
