@@ -75,8 +75,7 @@ def confirm():
     payment = request.form.get('payment')
     
     prod = Product.query.filter_by(id=request.form["product"]).first()
-    prod_name = prod.name
-    new_order = Order(name=prod_name, address=address, comment=comment, payment=payment)
+    new_order = Order(product_id = prod.id, user_id=current_user.id, name=prod.name,address=address,comment=comment,payment=payment)
     db.session.add(new_order)
     db.session.commit()
     

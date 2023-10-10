@@ -1,6 +1,7 @@
 from . import db
 from flask_login import UserMixin
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.sql import func
 
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key = True)
@@ -23,6 +24,10 @@ class Basket(db.Model):
     
 class Order(db.Model):
     id = db.Column(db.Integer, primary_key = True)
+    date = db.Column(db.DateTime(timezone=True), default=func.now())
+    product_id = db.Column(db.Integer,db.ForeignKey('product.id'))
+    user_id = db.Column(db.Integer,db.ForeignKey('user.id'))
+    status = db.Column(db.Boolean, default=False)
     name = db.Column(db.String(150))
     address = db.Column(db.String(150))
     comment = db.Column(db.String(150))
