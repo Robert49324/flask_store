@@ -28,7 +28,6 @@ class Order(db.Model):
     product_id = db.Column(db.Integer,db.ForeignKey('product.id'))
     user_id = db.Column(db.Integer,db.ForeignKey('user.id'))
     status = db.Column(db.Boolean, default=False)
-    name = db.Column(db.String(150))
     address = db.Column(db.String(150))
     comment = db.Column(db.String(150))
     payment = db.Column(db.String(150))
