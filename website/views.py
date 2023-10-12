@@ -75,7 +75,7 @@ def confirm():
     payment = request.form.get('payment')
     
     prod = Product.query.filter_by(id=request.form["product"]).first()
-    new_order = Order(product_id = prod.id, user_id=current_user.id, name=prod.name,address=address,comment=comment,payment=payment)
+    new_order = Order(product_id = prod.id, user_id=current_user.id, address=address,comment=comment,payment=payment)
     db.session.add(new_order)
     db.session.commit()
     
@@ -119,3 +119,11 @@ def admin():
             return redirect(url_for('views.admin'))
     orders = Order.query.all()
     return render_template("admin.html",user=current_user, orders=orders )
+
+@views.route("/complete", methods=['GET','POST'])
+def complete():
+    product_id = request.form.get("order")
+    order = Order.query.filter_by(id=request.form["order"]).first()
+    order.status = True
+    db.session.commit()
+    return redirect(url_for("views.admin"))
