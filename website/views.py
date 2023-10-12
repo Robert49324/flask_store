@@ -45,10 +45,13 @@ def catalog():
     
 @views.route("/product", methods=['GET','POST'])
 def product():
-    product = Product.query.get(request.form["product"])
-    if product is not None:
-        return render_template("product.html",user=current_user,product=product)
-    return render_template("product.html",user=current_user, product=None) 
+    try:
+        product_id = request.form["product"]
+        product = Product.query.get(product_id)
+    except KeyError:
+        product = None
+
+    return render_template("product.html", user=current_user, product=product)
     
 @views.route("/search", methods=['POST','GET'])
 def search():
