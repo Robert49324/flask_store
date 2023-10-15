@@ -85,6 +85,11 @@ def confirm():
     flash("Заказ оформлен!", category="success")
     return redirect(url_for("views.home"))
 
+@views.route("/favorites", methods=['GET','POST'])
+@login_required
+def favorites():
+    return redirect(url_for("views.home"))
+
 @views.route("/cart", methods=['GET','POST'])
 @login_required
 def cart():

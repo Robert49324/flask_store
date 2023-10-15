@@ -17,7 +17,7 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(150))
     first_name = db.Column(db.String(150))
     
-class Basket(db.Model):
+class Cart(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     user_id = db.Column(db.Integer,db.ForeignKey('user.id'))
     product_id = db.Column(db.Integer,db.ForeignKey('product.id'))
