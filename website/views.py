@@ -92,7 +92,8 @@ def confirm():
 def cartadd():
     if request.method == 'POST':
         product_id = request.form.get("product")
-        Cart.query.filter_by(product_id=product_id).delete()
+        cart = Cart(user_id=current_user.id,product_id=product_id)
+        db.session.add(cart)
         db.session.commit()
     return redirect(url_for("views.home"))
 
@@ -101,15 +102,15 @@ def cartadd():
 def cartdel():
     if request.method == 'POST':
         product_id = request.form.get("product")
-        cart = Cart(user_id=current_user.id,product_id=product_id)
-        db.session.add(cart)
+        Cart.query.filter_by(product_id=product_id).delete()
         db.session.commit()
     return redirect(url_for("views.home"))
 
 @views.route("/cart", methods=['GET','POST'])
 @login_required
 def cart():
-    return render_template("cart.html",user=current_user)
+    cart = Cart.query.filter_by(user_id=current_user.id)
+    return render_template("cart.html",user=current_user,cart=cart)
 
 @views.route("/admin", methods=['GET','POST'])
 @login_required
