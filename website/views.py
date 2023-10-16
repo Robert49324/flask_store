@@ -9,9 +9,11 @@ views = Blueprint("views",__name__)
 @views.route("/", methods=['GET','POST'])
 def home():
     data = Product.query.all()
-    cart = Cart.query.filter_by(user_id = current_user.id)
-    cart_product_ids = [item.product_id for item in cart.all()]
-    return render_template("home.html", products=data, user=current_user,cart=cart_product_ids)
+    if current_user.is_authenticated:
+        cart = Cart.query.filter_by(user_id = current_user.id)
+        cart_product_ids = [item.product_id for item in cart.all()]
+        return render_template("home.html", products=data, user=current_user,cart=cart_product_ids)
+    return render_template("home.html", products=data, user=current_user)
     
 @views.route("/catalog", methods=['GET','POST'])
 def catalog():
