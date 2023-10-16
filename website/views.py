@@ -1,4 +1,4 @@
-from flask import render_template, Blueprint, request, flash, redirect, url_for
+from flask import render_template, Blueprint, request, flash, redirect, url_for, session
 from flask_login import login_user, login_required, logout_user, current_user
 from . import db
 from .models import Product, Order, User, Cart
@@ -92,21 +92,24 @@ def confirm():
 @views.route("/cartadd", methods=['GET','POST'])
 @login_required
 def cartadd():
+    referer_url = request.referrer
     if request.method == 'POST':
         product_id = request.form.get("product")
         cart = Cart(user_id=current_user.id,product_id=product_id)
         db.session.add(cart)
         db.session.commit()
-    return redirect(url_for("views.home"))
-
+        
+    return redirect(referer_url)
+    
 @views.route("/cartdel", methods=['GET','POST'])
 @login_required
 def cartdel():
+    referer_url = request.referrer
     if request.method == 'POST':
         product_id = request.form.get("product")
         Cart.query.filter_by(product_id=product_id).delete()
         db.session.commit()
-    return redirect(url_for("views.home"))
+    return redirect(referer_url)
 
 @views.route("/cart", methods=['GET','POST'])
 @login_required
