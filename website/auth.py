@@ -17,15 +17,15 @@ def sign_up():
         user = User.query.filter_by(email=email).first()
         
         if user:
-            flash('Such user is already exists', category='error')
+            flash('Такой пользователь уже существует', category='error')
         elif len(email) < 4:
-            flash("Email must be greater then 3 characters", category='error')
+            flash("Адрес электронной почты слишком короткий", category='error')
         elif len(firstName) < 2:
-            flash("First name must be greater then 1 character", category='error')
+            flash("Имя слишком короткое", category='error')
         elif password1!=password2:
-            flash("Passwords don't match", category='error')
+            flash("Пароли не совпадают", category='error')
         elif len(password1) < 5:
-            flash("Password must be at least 7 characters", category='error')
+            flash("Пароль должен быть длинее 5 символов", category='error')
         else:
             new_user = User(email=email,first_name=firstName,password=generate_password_hash(password1, method='sha256'))
             db.session.add(new_user)

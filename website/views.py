@@ -1,7 +1,7 @@
 from flask import render_template, Blueprint, request, flash, redirect, url_for
 from flask_login import login_user, login_required, logout_user, current_user
 from . import db
-from .models import Product, Order, User
+from .models import Product, Order, User, Cart
 from flask_sqlalchemy import SQLAlchemy
 
 views = Blueprint("views",__name__)
@@ -9,7 +9,9 @@ views = Blueprint("views",__name__)
 @views.route("/", methods=['GET','POST'])
 def home():
     data = Product.query.all()
-    return render_template("home.html", products=data, user=current_user)
+    cart = Cart.query.filter_by(user_id = current_user.id)
+    cart_product_ids = [item.product_id for item in cart.all()]
+    return render_template("home.html", products=data, user=current_user,cart=cart_product_ids)
     
 @views.route("/catalog", methods=['GET','POST'])
 def catalog():
@@ -85,9 +87,23 @@ def confirm():
     flash("Заказ оформлен!", category="success")
     return redirect(url_for("views.home"))
 
-@views.route("/favorites", methods=['GET','POST'])
+@views.route("/cartadd", methods=['GET','POST'])
 @login_required
-def favorites():
+def cartadd():
+    if request.method == 'POST':
+        product_id = request.form.get("product")
+        Cart.query.filter_by(product_id=product_id).delete()
+        db.session.commit()
+    return redirect(url_for("views.home"))
+
+@views.route("/cartdel", methods=['GET','POST'])
+@login_required
+def cartdel():
+    if request.method == 'POST':
+        product_id = request.form.get("product")
+        cart = Cart(user_id=current_user.id,product_id=product_id)
+        db.session.add(cart)
+        db.session.commit()
     return redirect(url_for("views.home"))
 
 @views.route("/cart", methods=['GET','POST'])
