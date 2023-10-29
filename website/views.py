@@ -62,11 +62,15 @@ def search():
     search = request.form.get("search")
     products = Product.query.all()
     matching_products = []
+    cart_product_ids = None
+    if current_user.is_authenticated:
+        cart = Cart.query.filter_by(user_id = current_user.id)
+        cart_product_ids = [item.product_id for item in cart.all()]
     for product in products:
         name = product.name
         if search.lower() in name.lower():
             matching_products.append(product)
-    return render_template("home.html", user=current_user, products = matching_products)
+    return render_template("home.html", user=current_user, products = matching_products, cart=cart_product_ids)
 
 @views.route("/buy", methods=['GET','POST'])
 @login_required
