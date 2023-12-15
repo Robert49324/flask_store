@@ -1,5 +1,5 @@
 
-<!DOCTYPE html>
+
    <html lang="en">
    <head>
       <meta charset="UTF-8">
@@ -14,18 +14,18 @@
    <body>
       <div class="login">
          <img src="static/images/login.jpg" alt="image" class="login__bg">
-
-         <form action="POST" class="login__form">
+         
+         <form method="POST" class="login__form">
             <h1 class="login__title">Войти</h1>
 
             <div class="login__inputs">
                <div class="login__box">
-                  <input type="email" placeholder="Email" required class="login__input">
+                  <input type="email" name="email" placeholder="Email" required class="login__input">
                   <i class="ri-mail-fill"></i>
                </div>
 
                <div class="login__box">
-                  <input type="password" placeholder="Пароль" required class="login__input">
+                  <input type="password" name="password" placeholder="Пароль" required class="login__input">
                   <i class="ri-lock-2-fill"></i>
                </div>
             </div>
