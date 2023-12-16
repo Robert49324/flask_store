@@ -41,12 +41,13 @@ def login():
     if request.method == 'POST':
         email =  request.form.get("email")
         password = request.form.get("password")
+        remembrance  = request.form.get("remember")
 
         user = User.query.filter_by(email=email).first()
         
         if user:
             if check_password_hash(user.password, password):
-                login_user(user, remember=True)
+                login_user(user, remember=True if remembrance == "on" else False)
                 flash("Вы вошли", category = "success")
                 return redirect(url_for("views.home"))
             else:

@@ -1,54 +1,50 @@
-{% extends "base.html" %} {%block title%}Зарегестрироваться{% endblock %} 
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-{% block content %}
-<div class="container-sm">
-<form method="POST">
-  <h3 align="center">Зарегестрироваться</h3>
-  <div class="form-group">
-    <label for="email">Адрес электронной почты</label>
-    <input
-      type="email"
-      class="form-control"
-      id="email"
-      name="email"
-      placeholder="Введите адрес электронной почты"
-    />
-  </div>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" crossorigin="">
 
-  <div class="form-group">
-    <label for="firstName">Имя</label>
-    <input
-      type="text"
-      class="form-control"
-      id="firstName"
-      name="firstName"
-      placeholder="Введите имя"
-    />
-  </div>
+      <link rel="stylesheet" href="static/styles/login.css">
 
-  <div class="form-group">
-    <label for="password1">Пароль</label>
-    <input
-      type="password"
-      class="form-control"
-      id="password1"
-      name="password1"
-      placeholder="Введите пароль"
-    />
-  </div>
+      <title>Регистрация</title>
+   </head>
+   <body>
+      <div class="login">
+         <img src="static/images/register.jpg" alt="image" class="login__bg">
+         
+         <form method="POST" class="login__form">
+            <h1 class="login__title">Зарегистрироваться</h1>
 
-  <div class="form-group">
-    <label for="password2">Подтверждение пароля </label>
-    <input
-      type="password"
-      class="form-control"
-      id="password2"
-      name="password2"
-      placeholder="Подтвердите пароль"
-    />
-  </div>
-  <br />
-  <button type="submit" class="btn btn-dark">Зарегестрироваться</button>
-</form>
-</div>
-{% endblock %}
+            <div class="login__inputs">
+               <div class="login__box">
+                  <input type="email" name="email" placeholder="Email" required class="login__input" autocomplete="off">
+                  <i class="ri-mail-fill"></i>
+               </div>
+
+               <div class="login__box">
+                  <input type="firstName" name="firstName" placeholder="Имя" required class="login__input" autocomplete="off">
+                  <i class="ri-mail-fill"></i>
+               </div>
+
+               <div class="login__box">
+                <input type="password" name="password1" placeholder="Пароль" required class="login__input" autocomplete="off">
+                <i class="ri-lock-2-fill"></i>
+             </div>
+
+             <div class="login__box">
+                <input type="password" name="password2" placeholder="Подтверждение пароля" required class="login__input" autocomplete="off">
+                <i class="ri-lock-2-fill"></i>
+             </div>
+            </div>
+
+            <button type="submit" class="login__button">Создать аккаунт</button>
+
+            <div class="login__register">
+               Уже есть аккаунт? <a href="/login">Войти</a>
+            </div>
+         </form>
+      </div>
+   </body>
+</html>
+
