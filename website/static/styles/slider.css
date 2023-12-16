@@ -42,7 +42,7 @@
   }
   
   .manual-btn {
-    border: 2px solid teal;
+    border: 2px solid rgb(255, 255, 255);
     padding: 5px;
     border-radius: 10px;
     cursor: pointer;
@@ -54,7 +54,7 @@
   }
   
   .manual-btn:hover {
-    background: teal;
+    background: rgb(255, 255, 255);
   }
   
   #radio1:checked ~ .first {
@@ -80,13 +80,13 @@
   /*css for automatic navigation*/
   
   .navigation-auto {
-    margin-top: 460px;
+    margin-top: 410px;
     display: flex;
     justify-content: center;
   }
   
   .navigation-auto div {
-    border: 2px solid teal;
+    border: 2px solid rgb(255, 255, 255);
     padding: 5px;
     border-radius: 10px;
     transition: 1s;
@@ -97,22 +97,22 @@
   }
   
   #radio1:checked ~ .navigation-auto .auto-btn1{
-    background: teal;
+    background: rgb(255, 255, 255);
   }
   
   #radio2:checked ~ .navigation-auto .auto-btn2{
-    background: teal;
+    background: rgb(255, 255, 255);
   }
   
   #radio3:checked ~ .navigation-auto .auto-btn3{
-    background: teal;
+    background: rgb(255, 255, 255);
   }
   
   #radio4:checked ~ .navigation-auto .auto-btn4{
-    background: teal;
+    background: rgb(255, 255, 255);
   }
 
   #radio5:checked ~ .navigation-auto .auto-btn5{
-    background: teal;
+    background: rgb(255, 255, 255);
   }
   
