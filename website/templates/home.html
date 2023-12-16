@@ -1,6 +1,44 @@
 {% extends "base.html" %}
 {% block title %}Главная{% endblock %}
 {% block content %}
+
+<div class="slider">
+  <div class="slides">
+
+    <input type="radio" name="radio-btn" id="radio1">
+    <input type="radio" name="radio-btn" id="radio2">
+    <input type="radio" name="radio-btn" id="radio3">
+    <input type="radio" name="radio-btn" id="radio4">
+    <input type="radio" name="radio-btn" id="radio5">
+
+     <div class="slide first">
+       <img src="static/images/slider1.jpg" alt="">
+     </div>
+     <div class="slide">
+       <img src="static/images/slider2.png" alt="">
+     </div>
+     <div class="slide">
+      <img src="static/images/slider3.png" alt="">
+    </div>
+    <div class="slide">
+      <img src="static/images/slider4.png" alt="">
+    </div>
+    <div class="slide">
+      <img src="static/images/slider5.png" alt="">
+    </div>
+
+
+    
+  </div>
+  <div class="navigation-manual">
+    <label for="radio1" class="manual-btn"></label>
+    <label for="radio2" class="manual-btn"></label>
+    <label for="radio3" class="manual-btn"></label>
+    <label for="radio4" class="manual-btn"></label>
+    <label for="radio5" class="manual-btn"></label>
+  </div>
+</div>
+
 {% for product in products %}
 <div class="container-md">
   <div class="card m-3 p-2">
@@ -43,5 +81,18 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  var counter = 1;
+  setInterval(function(){
+    document.getElementById('radio' + counter).checked = true;
+    counter++;
+    if(counter > 5){
+      counter = 1;
+    }
+  }, 5000);
+</script>
 {% endfor %}
+
+
 {% endblock %}
