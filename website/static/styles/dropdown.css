@@ -32,9 +32,9 @@
   cursor: pointer;
   font: inherit;
   padding: 0;
-  display: block; /* Чтобы кнопки занимали всю ширину li */
-  width: 100%;    /* Растягиваем кнопки на всю ширину li */
-  text-align: center; /* Центрируем текст внутри кнопок */
+  display: block;
+  width: 100%;
+  text-align: center;
 }
 
 .submenu {
