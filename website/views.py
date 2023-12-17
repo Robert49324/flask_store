@@ -3,6 +3,7 @@ from flask_login import login_user, login_required, logout_user, current_user
 from . import db
 from .models import Product, Order, User, Cart
 from flask_sqlalchemy import SQLAlchemy
+from loguru import logger
 
 views = Blueprint("views",__name__)
 

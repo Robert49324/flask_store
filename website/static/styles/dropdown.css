@@ -1,64 +1,77 @@
-    .menu ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    background-color: #6c5cc6;
-    text-align: center;
-    font-family: 'Montserrat', sans-serif;
-  }
-  
-  .menu li {
-    display: inline-block;
-    position: relative;
-    padding: 15px;
-    border-right: 1px solid #8073ce;
-    background-color: #6c5cc6;
-    font-weight: bold;
-  }
-  
-  .menu li:last-child {
-    border-right: 1px solid #8073ce;
-  }
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #6c5cc6;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+}
 
-  .menu li:first-child {
-    border-left: 1px solid #8073ce;
-  }
-  
-  .menu a {
-    color: #ffffff;
-    text-decoration: none;
-  }
-  
-  .submenu {
-    width: 100%;
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #f2f2f2;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .submenu a {
-    display: block;
-    padding: 10px;
-    color: #000000;
-    text-decoration: none;
-    font-weight: normal;
-    transition: color 0.5s ease;
-  }
-  
-  .submenu a:hover {
-    background-color: #f2f2f2;
-    color: #8073ce;
-  }
-  .menu li:hover {
-    background-color: #8073ce;
-  }
-  .menu li:hover .submenu {
-    display: block;
-    background-color: #f2f2f2;
-  }
-  
-  
+.menu li {
+  display: inline-block;
+  position: relative;
+  padding: 15px;
+  border-right: 1px solid #8073ce;
+  background-color: #6c5cc6;
+  font-weight: bold;
+}
+
+.menu li:last-child {
+  border-right: 1px solid #8073ce;
+}
+
+.menu li:first-child {
+  border-left: 1px solid #8073ce;
+}
+
+.menu button {
+  background: none;
+  border: none;
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+  font: inherit;
+  padding: 0;
+  display: block; /* Чтобы кнопки занимали всю ширину li */
+  width: 100%;    /* Растягиваем кнопки на всю ширину li */
+  text-align: center; /* Центрируем текст внутри кнопок */
+}
+
+.submenu {
+  width: 100%;
+  opacity: 0;
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #f2f2f2;
+  padding: 0;
+  margin: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+.menu li:hover .submenu {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.submenu button {
+  display: block;
+  padding: 10px;
+  color: #000000;
+  text-decoration: none;
+  font-weight: normal;
+  transition: color 0.5s ease;
+  width: 100%; /* Растягиваем кнопки в подменю на всю ширину подменю */
+}
+
+.submenu button:hover {
+  background-color: #f2f2f2;
+  color: #8073ce;
+}
+
+.menu li:hover {
+  background-color: #8073ce;
+}
