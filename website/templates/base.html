@@ -18,6 +18,8 @@
 
     <link rel="stylesheet" href="static/styles/slider.css">
 
+    <link rel="stylesheet" href="static/styles/dropdown.css">
+    
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -96,6 +98,27 @@
         </div>
       </div>
     </nav>
+    
+    <div class="menu">
+      <ul>
+        <li><a href="#">Комплектующие для компьютеров</a>
+          <div class="submenu">
+            <a href="#">Видеокарты</a>
+            <a href="#">Процессоры</a>
+            <!-- Добавьте другие ссылки по аналогии -->
+          </div>
+        </li>
+
+        <li><a href="#">Периферия и аксессуары</a>
+          <div class="submenu">
+            <a href="#">Клавиатуры</a>
+            <a href="#">Мыши</a>
+            <!-- Добавьте другие ссылки по аналогии -->
+          </div>
+        </li>
+        <!-- Добавьте другие элементы меню по аналогии -->
+      </ul>
+    </div>
 
     {% with messages = get_flashed_messages(with_categories=true) %} {% if
     messages %} {%for category, message in messages%} {% if category ==
