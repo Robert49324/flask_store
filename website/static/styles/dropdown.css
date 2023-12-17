@@ -44,11 +44,13 @@
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: #f2f2f2;
+  background-color: #ffffff;
   padding: 0;
   margin: 0;
   transition: opacity 0.3s ease, transform 0.3s ease;
   pointer-events: none;
+  z-index: 1000;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
 }
 
 .menu li:hover .submenu {
@@ -64,14 +66,15 @@
   text-decoration: none;
   font-weight: normal;
   transition: color 0.5s ease;
-  width: 100%; /* Растягиваем кнопки в подменю на всю ширину подменю */
+  width: 100%; 
 }
 
 .submenu button:hover {
-  background-color: #f2f2f2;
+  background-color: #ffffff;
   color: #8073ce;
 }
 
 .menu li:hover {
   background-color: #8073ce;
 }
+

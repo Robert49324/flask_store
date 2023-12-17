@@ -12,17 +12,24 @@
       crossorigin="anonymous"
     />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
 
-    <link rel="stylesheet" href="static/styles/slider.css">
+    <link rel="stylesheet" href="static/styles/slider.css" />
 
-    <link rel="stylesheet" href="static/styles/dropdown.css">
-    
+    <link rel="stylesheet" href="static/styles/dropdown.css" />
   </head>
+
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div style="height: 56px"></div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
       <div class="container-xl">
         <a class="navbar-brand" href="/">
           <img src="static/images/LOGO.png" alt="" width="32" height="16" />
@@ -39,104 +46,119 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        
-          <form class="d-flex flex-grow-1" action="/search" method="POST">
-            <input
-              class="form-control me-2"
-              id="search"
-              name="search"
-              type="search"
-              placeholder="Поиск"
-              aria-label="search"
-              autocomplete="off"
-            />
-            <button class="btn btn-outline-success" type="submit">Поиск</button>
-          </form>
-          <ul class="navbar-nav">
-            {% if user.is_authenticated%}
-              {%if user.email == "admin@gmail.com"%}
-              <li class="nav-item"><a class="nav-link" href="admin">БД</a></li>
-              {%endif%}
-            <li class="nav-item"><a class="nav-link" href="cart">Корзина</a></li>
-            <li class="nav-item">
-              <a class="nav-link" href="logout">Выйти</a>
-            </li>
-            {% else %}
-            <li class="nav-item"><a class="nav-link" href="login">Войти</a></li>
-            <li class="nav-item">
-              <a class="nav-link" href="sign-up">Зарегестрироваться</a>
-            </li>
-            {% endif %}
-          </ul>
-        </div>
+
+        <form class="d-flex flex-grow-1" action="/search" method="POST">
+          <input
+            class="form-control me-2"
+            id="search"
+            name="search"
+            type="search"
+            placeholder="Поиск"
+            aria-label="search"
+            autocomplete="off"
+          />
+          <button class="btn btn-outline-success" type="submit">Поиск</button>
+        </form>
+        <ul class="navbar-nav">
+          {% if user.is_authenticated%} {%if user.email == "admin@gmail.com"%}
+          <li class="nav-item"><a class="nav-link" href="admin">БД</a></li>
+          {%endif%}
+          <li class="nav-item"><a class="nav-link" href="cart">Корзина</a></li>
+          <li class="nav-item"><a class="nav-link" href="logout">Выйти</a></li>
+          {% else %}
+          <li class="nav-item"><a class="nav-link" href="login">Войти</a></li>
+          <li class="nav-item"><a class="nav-link" href="sign-up">Зарегестрироваться</a></li>
+          {% endif %}
+        </ul>
       </div>
     </nav>
-    
+
     <div class="menu">
       <form action="/catalog" method="POST">
-          <ul>
-              <li>
-                  <button type="submit" name="selectedItem" value="Комплектующие для компьютеров" disabled>Комплектующие для компьютеров</button>
-                  <div class="submenu">
-                      <button type="submit" name="button" value="Видеокарты">Видеокарты</button>
-                      <button type="submit" name="button" value="Процессоры">Процессоры</button>
-                      <button type="submit" name="button" value="Материнские платы">Материнские платы</button>
-                      <button type="submit" name="button" value="Оперативная память">Оперативная память</button>
-                      <button type="submit" name="button" value="Системы охлаждения">Системы охлаждения</button>
-                      <button type="submit" name="button" value="SSD">SSD</button>
-                      <button type="submit" name="button" value="Жесткие диски">Жесткие диски</button>
-                      <button type="submit" name="button" value="Корпуса">Корпуса</button>
-                      <button type="submit" name="button" value="Блоки питания">Блоки питания</button>
-                  </div>
-              </li>
+        <ul>
+          <li>
+            <button
+              type="submit"
+              name="selectedItem"
+              value="Комплектующие для компьютеров"
+              disabled
+            >
+              Комплектующие для компьютеров
+            </button>
+            <div class="submenu">
+              <button type="submit" name="button" value="Видеокарты">Видеокарты</button>
+              <button type="submit" name="button" value="Процессоры">Процессоры</button>
+              <button type="submit" name="button" value="Материнские платы">Материнские платы</button>
+              <button type="submit" name="button" value="Оперативная память">Оперативная память</button>
+              <button type="submit" name="button" value="Системы охлаждения">Системы охлаждения</button>
+              <button type="submit" name="button" value="SSD">SSD</button>
+              <button type="submit" name="button" value="Жесткие диски"> Жесткие диски</button>
+              <button type="submit" name="button" value="Корпуса">Корпуса</button>
+              <button type="submit" name="button" value="Блоки питания">Блоки питания</button>
+            </div>
+          </li>
 
-              <li>
-                  <button type="submit" name="selectedItem" value="Периферия и аксессуары" disabled>Периферия и аксессуары</button>
-                  <div class="submenu">
-                      <button type="submit" name="button" value="Клавиатуры">Клавиатуры</button>
-                      <button type="submit" name="button" value="Мыши">Мыши</button>
-                      <button type="submit" name="button" value="Мониторы">Мониторы</button>
-                      <button type="submit" name="button" value="Web-камеры">Web-камеры</button>
-                      <button type="submit" name="button" value="Коврики для мыши">Коврики для мыши</button>
-                      <button type="submit" name="button" value="Кабели">Кабели</button>
-                      <button type="submit" name="button" value="USB-хабы">USB-хабы</button>
-                      <button type="submit" name="button" value="Очки виртуальной реальности">Очки виртуальной реальности</button>
-                  </div>
-              </li>
-
-              <li>
-                  <button type="submit" name="selectedItem" value="Сетевое оборудование" disabled>Сетевое оборудование</button>
-                  <div class="submenu">
-                      <button type="submit" name="button" value="Беспроводные точки доступа">Беспроводные точки доступа</button>
-                      <button type="submit" name="button" value="Беспроводные маршрутизаторы">Беспроводные маршрутизаторы</button>
-                      <button type="submit" name="button" value="Коммутаторы">Коммутаторы</button>
-                      <button type="submit" name="button" value="Сетевые адаптеры">Сетевые адаптеры</button>
-                      <button type="submit" name="button" value="Антены беспроводной связи">Антены беспроводной связи</button>
-                  </div>
-              </li>
-          </ul>
+          <li>
+            <button
+              type="submit"
+              name="selectedItem"
+              value="Периферия и аксессуары"
+              disabled
+            >
+              Периферия и аксессуары
+            </button>
+            <div class="submenu">
+              <button type="submit" name="button" value="Клавиатуры">Клавиатуры</button>
+              <button type="submit" name="button" value="Мыши">Мыши</button>
+              <button type="submit" name="button" value="Мониторы">Мониторы</button>
+              <button type="submit" name="button" value="Web-камеры">Web-камеры</button>
+              <button type="submit" name="button" value="Коврики для мыши">Коврики для мыши</button>
+              <button type="submit" name="button" value="Кабели">Кабели</button>
+              <button type="submit" name="button" value="USB-хабы">USB-хабы</button>
+              <button type="submit" name="button">Очки виртуальной реальности</button>
+            </div>
+          </li>
+          <li>
+            <button type="submit" name="selectedItem" value="Сетевое оборудование" disabled>Сетевое оборудование</button>
+            <div class="submenu">
+              <button type="submit" name="button" value="Беспроводные точки доступа">Беспроводные точки доступа</button>
+              <button type="submit" name="button" value="Беспроводные маршрутизаторы">Беспроводные маршрутизаторы</button>
+              <button type="submit" name="button" value="Коммутаторы">Коммутаторы</button>
+              <button type="submit" name="button" value="Сетевые адаптеры">Сетевые адаптеры</button>
+              <button type="submit" name="button" value="Антены беспроводной связи">Антены беспроводной связи</button>
+            </div>
+          </li>
+        </ul>
       </form>
-  </div>
+    </div>
 
     {% with messages = get_flashed_messages(with_categories=true) %} {% if
     messages %} {%for category, message in messages%} {% if category ==
     'error'%}
     <div class="alert alert-danger alert-dissmisable fade show" role="alert">
       {{message}}
-      <button type="button" class="btn-close" aria-label="Close" data-dismiss="alert"></button>
-      </button>
+      <button
+        type="button"
+        class="btn-close"
+        aria-label="Close"
+        data-dismiss="alert"
+      ></button>
     </div>
 
     {% else %}
 
     <div class="alert alert-success alert-dissmisable fade show" role="alert">
       {{message}}
-      <button type="button" class="btn-close" aria-label="Close" data-dismiss="alert"></button>
-      </button>
+      <button
+        type="button"
+        class="btn-close"
+        aria-label="Close"
+        data-dismiss="alert"
+      ></button>
     </div>
 
     {%endif%} {% endfor %} {% endif %} {% endwith %} {% block content %} 
-    {% endblock %}
+    {%endblock %}
 
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -159,22 +181,21 @@
       crossorigin="anonymous"
     ></script>
     <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      var menuItems = document.querySelectorAll(".menu li");
-    
-      menuItems.forEach(function (menuItem) {
-        menuItem.addEventListener("mouseenter", function () {
-          var submenu = this.querySelector(".submenu");
-          submenu.style.transitionDelay = "0.3s";
-        });
-    
-        menuItem.addEventListener("mouseleave", function () {
-          var submenu = this.querySelector(".submenu");
-          submenu.style.transitionDelay = "0s";
+      document.addEventListener("DOMContentLoaded", function () {
+        var menuItems = document.querySelectorAll(".menu li");
+
+        menuItems.forEach(function (menuItem) {
+          menuItem.addEventListener("mouseenter", function () {
+            var submenu = this.querySelector(".submenu");
+            submenu.style.transitionDelay = "0.3s";
+          });
+
+          menuItem.addEventListener("mouseleave", function () {
+            var submenu = this.querySelector(".submenu");
+            submenu.style.transitionDelay = "0s";
+          });
         });
       });
-    });
-  </script>
-    
+    </script>
   </body>
 </html>
