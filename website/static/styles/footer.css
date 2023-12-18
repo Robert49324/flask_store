@@ -1,7 +1,12 @@
-body{
-	line-height: 1.5;
+body {
 	font-family: 'Montserrat', sans-serif;
-}
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh; /* Это гарантирует, что body займет как минимум 100% высоты окна просмотра */
+  }
 *{
 	margin:0;
 	padding:0;
@@ -9,22 +14,26 @@ body{
 }
 .container{
 	max-width: 1170px;
-	margin:auto;
+	margin: auto;
 }
 .row{
 	display: flex;
+	justify-content: center;
 	flex-wrap: wrap;
 }
 ul{
 	list-style: none;
+	padding-left: 0;
 }
 .footer{
 	background-color: #24262b;
     padding: 70px 0;
+	margin-top: auto;
 }
 .footer-col{
    width: 25%;
    padding: 0 15px;
+   box-sizing: border-box;
 }
 .footer-col h4{
 	font-size: 18px;
