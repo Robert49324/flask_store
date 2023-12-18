@@ -46,6 +46,46 @@ def catalog():
         elif request.form["button"] == "Блоки питания":
             data = Product.query.filter_by(category="Power")
             return render_template("catalog.html",products=data, user=current_user,title="Блоки питания")
+        elif request.form["button"] == "Клавиатуры":
+            data = Product.query.filter_by(category="Keyboard")
+            return render_template("catalog.html", products=data, user=current_user, title="Клавиатуры")
+        elif request.form["button"] == "Мыши":
+            data = Product.query.filter_by(category="Mouse")
+            return render_template("catalog.html", products=data, user=current_user, title="Мыши")
+        elif request.form["button"] == "Мониторы":
+            data = Product.query.filter_by(category="Monitor")
+            return render_template("catalog.html", products=data, user=current_user, title="Мониторы")
+        elif request.form["button"] == "Web-камеры":
+            data = Product.query.filter_by(category="Web-Camera")
+            return render_template("catalog.html", products=data, user=current_user, title="Web-камеры")
+        elif request.form["button"] == "Коврики для мыши":
+            data = Product.query.filter_by(category="Pad")
+            return render_template("catalog.html", products=data, user=current_user, title="Коврики для мыши")
+        elif request.form["button"] == "Кабели":
+            data = Product.query.filter_by(category="Cabel")
+            return render_template("catalog.html", products=data, user=current_user, title="Кабели")
+        elif request.form["button"] == "USB-хабы":
+            data = Product.query.filter_by(category="USB-HUB")
+            return render_template("catalog.html", products=data, user=current_user, title="USB-хабы")
+        elif request.form["button"] == "Очки виртуальной реальности":
+            data = Product.query.filter_by(category="VR")
+            return render_template("catalog.html", products=data, user=current_user, title="Очки виртуальной реальности")
+        elif request.form["button"] == "Беспроводные точки доступа":
+            data = Product.query.filter_by(category="Access point")
+            return render_template("catalog.html", products=data, user=current_user, title="Беспроводные точки доступа")
+        elif request.form["button"] == "Беспроводные маршрутизаторы":
+            data = Product.query.filter_by(category="Router")
+            return render_template("catalog.html", products=data, user=current_user, title="Беспроводные маршрутизаторы")
+        elif request.form["button"] == "Коммутаторы":
+            data = Product.query.filter_by(category="Switcher")
+            return render_template("catalog.html", products=data, user=current_user, title="Коммутаторы")
+        elif request.form["button"] == "Сетевые адаптеры":
+            data = Product.query.filter_by(category="Network adapter")
+            return render_template("catalog.html", products=data, user=current_user, title="Сетевые адаптеры")
+        elif request.form["button"] == "Антены беспроводной связи":
+            data = Product.query.filter_by(category="Wireless antenna")
+            return render_template("catalog.html", products=data, user=current_user, title="Антены беспроводной связи")
+        
     return render_template("catalog.html", user=current_user, title="Каталог")
     
 @views.route("/product", methods=['GET','POST'])
@@ -140,7 +180,8 @@ def admin():
             flash("Слишком короткое название", category='error')
         elif len(description) < 2:
             flash("Слишком короткое описание", category='error')
-        elif category not in ("GPU","CPU","Motherboard","RAM","Cooling","SSD","HDD","Frame","Power"):
+        elif category not in ("GPU","CPU","Motherboard","RAM","Cooling","SSD","HDD","Frame","Power","Keyboard","Mouse","Monitor","Web-Camera",
+                                 "Pad", "Cabel", "USB-HUB", "VR", "Access point", "Router", "Switcher","Network adapter","Wireless antenna"):
             flash("Неверная категория", category="error")
         elif int(price) <= 0:
             flash("Слишком низкая цена", category="error")

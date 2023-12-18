@@ -8,7 +8,8 @@ class Product(db.Model):
     name = db.Column(db.String(150), unique = True)
     description = db.Column(db.String(1000))
     price = db.Column(db.Integer)
-    category = db.Column(db.Enum("GPU","CPU","Motherboard","RAM","Cooling","SSD","HDD","Frame","Power"))
+    category = db.Column(db.Enum("GPU","CPU","Motherboard","RAM","Cooling","SSD","HDD","Frame","Power","Keyboard","Mouse","Monitor","Web-Camera",
+                                 "Pad", "Cabel", "USB-HUB", "VR", "Access point", "Router", "Switcher","Network adapter","Wireless antenna"))
     picture = db.Column(db.String(1000))
 
 class User(db.Model, UserMixin):
