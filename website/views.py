@@ -172,27 +172,26 @@ def admin():
         category = request.form.get('category')
         price = request.form.get('price')
         picture = request.form.get('picture')
-
         user = Product.query.filter_by(name=name).first()
         
         if user:
-            flash('Такой товар уже существует', category='error')
+            logger.debug('Такой товар уже существует')
         elif len(name) < 4:
-            flash("Слишком короткое название", category='error')
+            logger.debug("Слишком короткое название")
         elif len(description) < 2:
-            flash("Слишком короткое описание", category='error')
+           logger.debug("Слишком короткое описание")
         elif category not in ("GPU","CPU","Motherboard","RAM","Cooling","SSD","HDD","Frame","Power","Keyboard","Mouse","Monitor","Web-Camera",
                                  "Pad", "Cabel", "USB-HUB", "VR", "Access point", "Router", "Switcher","Network adapter","Wireless antenna"):
-            flash("Неверная категория", category="error")
+            logger.debug("Неверная категория")
         elif int(price) <= 0:
-            flash("Слишком низкая цена", category="error")
-        elif len(description) > 1000:
-            flash("Слишком длинное описание", category="error")
+            logger.debug("Слишком низкая цена")
+        elif len(description) > 4000:
+            logger.debug("Слишком длинное описание")
         else:
             new_product = Product(name=name,description=description,category=category,price=price, picture=picture)
             db.session.add(new_product)
             db.session.commit()
-            flash('Товар добавлен', category='success')
+            logger.debug('Товар добавлен')
             return redirect(url_for('views.admin'))
     orders = Order.query.all()
     return render_template("admin.html",user=current_user, orders=orders )
