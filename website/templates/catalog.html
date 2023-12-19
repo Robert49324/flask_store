@@ -11,6 +11,21 @@
         <div class="card-body">
           <h5 class="card-title">{{product.name}}</h5>
           <p class="card-text">{{product.description}}</p>
+
+          {% if product.reviews and product.rating %}
+            {% set rating = product.rating / product.reviews %}
+            {% set rounded_rating = rating|round %}
+            <div class="rating">
+              {% for i in range(1, 6) %}
+                {% if i <= rounded_rating %}
+                  <i class="bi bi-star-fill text-warning"></i>
+                  
+                {% else %}
+                  <i class="bi bi-star text-warning"></i>
+                {% endif %}
+              {% endfor %}
+            </div>
+          {% endif %}
         </div>
       </div>
       <div class="col-md-1">
@@ -25,13 +40,13 @@
             <button class="btn btn-dark mb-2 me-2 mt-2" type="submit" name="product" value="{{  product.id  }}">Купить</button>
           </form>
           {% if product.id in cart %}
-          <form action="/cartadd" method="POST">
+          <form action="/cartdel" method="POST">
             <button class="btn me-2" type="submit" name="product" value="{{  product.id  }}">
               <i class="bi bi-bag-fill h4"></i>
             </button>
           </form>
           {% else %}
-          <form action="/cartdel" method="POST">
+          <form action="/cartadd" method="POST">
             <button class="btn me-2" type="submit" name="product" value="{{  product.id  }}">
               <i class="bi bi-bag h4"></i>
             </button>

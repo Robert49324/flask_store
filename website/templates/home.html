@@ -56,6 +56,21 @@
         <div class="card-body">
           <h5 class="card-title">{{product.name}}</h5>
           <p class="card-text">{{product.description}}</p>
+
+          {% if product.reviews and product.rating %}
+            {% set rating = product.rating / product.reviews %}
+            {% set rounded_rating = rating|round %}
+            <div class="rating">
+              {% for i in range(1, 6) %}
+                {% if i <= rounded_rating %}
+                  <i class="bi bi-star-fill text-warning"></i>
+                  
+                {% else %}
+                  <i class="bi bi-star text-warning"></i>
+                {% endif %}
+              {% endfor %}
+            </div>
+          {% endif %}
         </div>
       </div>
       <div class="col-md-1">

@@ -60,9 +60,9 @@
                                 Оценка:
                                 {% for i in range(5) %}
                                     {% if i < comment.rating %}
-                                        <span class="star-selected">&#x2605;</span>
+                                    <i class="bi bi-star-fill text-warning"></i>
                                     {% else %}
-                                        <span class="star">&#x2606;</span>
+                                    <i class="bi bi-star text-warning"></i>
                                     {% endif %}
                                 {% endfor %}
                             </span>
