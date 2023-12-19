@@ -12,11 +12,11 @@
 }
 
 [contenteditable] {
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 200px;
+  margin-right: 200px;
   border: 1px solid #000;
   padding: 1em;
-  min-height: 2em;
+  min-height: 8em;
   font-size: 14px;
   text-align: left;
 }
@@ -25,12 +25,16 @@
   border: 0;
   padding: 0.5em;
   margin: 10px;
-  background: #8073ce;
+  background: #6c5cc6;
   color: white;
   font-weight: bold;
   text-decoration: none;
   display: inline-block;
-  float: right;
+}
+
+.button:hover{
+  color: white;
+  background-color: #8073ce;
 }
 
 .stars {

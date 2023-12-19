@@ -93,10 +93,11 @@ def product():
     try:
         product_id = request.form["product"]
         product = Product.query.get(product_id)
+        comments = Comment.query.filter_by(product_id = product_id)
     except KeyError:
         product = None
 
-    return render_template("product.html", user=current_user, product=product)
+    return render_template("product.html", user=current_user, product=product, comments = comments)
     
 @views.route("/search", methods=['POST','GET'])
 def search():
@@ -211,7 +212,7 @@ def submit_review():
     rating = request.form.get('rating')
     product_id = request.form.get('product')
     
-    comment = Comment(user_id = current_user.id, product_id = product_id, comment = comment, rating = rating)
+    comment = Comment(user_name = current_user.first_name, product_id = product_id, comment = comment, rating = rating)
     
     db.session.add(comment)
     

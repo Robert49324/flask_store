@@ -39,6 +39,6 @@ class Order(db.Model):
 class Comment(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     product_id = db.Column(db.Integer,db.ForeignKey('product.id'))
-    user_id = db.Column(db.Integer,db.ForeignKey('user.id'))
+    user_name = db.Column(db.Integer,db.ForeignKey('user.first_name'))
     comment = db.Column(db.String(4000))
     rating = db.Column(db.Integer, default=0)
