@@ -1,7 +1,7 @@
-from flask import render_template, Blueprint, request, flash, redirect, url_for, session
+from flask import jsonify, render_template, Blueprint, request, flash, redirect, url_for, session
 from flask_login import login_user, login_required, logout_user, current_user
 from . import db
-from .models import Product, Order, User, Cart
+from .models import Product, Order, User, Cart, Comment
 from flask_sqlalchemy import SQLAlchemy
 from loguru import logger
 
@@ -203,3 +203,23 @@ def complete():
     order.status = True
     db.session.commit()
     return redirect(url_for("views.admin"))
+
+@views.route('/submit_review', methods=['POST'])
+@login_required
+def submit_review():
+    comment = request.form.get('comment')
+    rating = request.form.get('rating')
+    product_id = request.form.get('product')
+    
+    comment = Comment(user_id = current_user.id, product_id = product_id, comment = comment, rating = rating)
+    
+    db.session.add(comment)
+    
+    product = Product.query.filter_by(id=product_id).first()
+
+    product.reviews = int(product.reviews) + 1
+    product.rating = int(product.rating) + int(rating)
+    
+    db.session.commit()
+    
+    return render_template("product.html", user=current_user, product=product_id)

@@ -11,6 +11,8 @@ class Product(db.Model):
     category = db.Column(db.Enum("GPU","CPU","Motherboard","RAM","Cooling","SSD","HDD","Frame","Power","Keyboard","Mouse","Monitor","Web-Camera",
                                  "Pad", "Cabel", "USB-HUB", "VR", "Access point", "Router", "Switcher","Network adapter","Wireless antenna"))
     picture = db.Column(db.String(1000))
+    rating = db.Column(db.Integer, default=0)
+    reviews = db.Column(db.Integer, default=0)
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key = True)
@@ -33,3 +35,10 @@ class Order(db.Model):
     address = db.Column(db.String(150))
     comment = db.Column(db.String(150))
     payment = db.Column(db.String(150))
+    
+class Comment(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    product_id = db.Column(db.Integer,db.ForeignKey('product.id'))
+    user_id = db.Column(db.Integer,db.ForeignKey('user.id'))
+    comment = db.Column(db.String(4000))
+    rating = db.Column(db.Integer, default=0)

@@ -4,6 +4,7 @@
 {% endif%}
 {% block content %} 
 {% if product %} 
+<link rel="stylesheet" href="static/styles/comment.css" />
 <div class="container-md">
   <h2 class="col d-flex my-3">{{product.name}}</h2>
   <div class="row">
@@ -24,6 +25,63 @@
     </div>
   </div>
 </div>
+<div class="form" style="text-align: center">
+  <div class="errors"></div>
+  <p class="label">Ваш отзыв</p>
+  <div class="stars">
+    <span class="star-1">&#x2605;</span>
+    <span class="star-2">&#x2605;</span>
+    <span class="star-3">&#x2605;</span>
+    <span class="star-4">&#x2605;</span>
+    <span class="star-5">&#x2605;</span>
+  </div>
+  <div class="comments" id="comments" contenteditable="true"></div>
+  <div class="you-rated"></div>
+  <a class="button" href="#">Оставить отзыв</a>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+  $(document).ready(function() {
+    window.clean = true;
+
+    $('[class^="star-"]').on('click', function() {
+      $(this).siblings().removeClass('selected');
+      $(this).addClass('selected');
+      $(this).prevAll().addClass('selected');
+      var index = $(this).index() + 1;
+    });
+
+    $('.button').on('click', function() {
+      if ($('#comments').is(':empty')) {
+        window.clean = false;
+      }
+
+      if (window.clean) {
+        // Добавляем айди продукта к данным
+        var productId = "{{ product.id }}";
+
+        $.ajax({
+          type: 'POST', 
+          url: '/submit_review',
+          data: {
+            product: productId,
+            comment: $('#comments').text(),
+            rating: $('.stars .selected').length
+          },
+          success: function(response) {
+            $('.form').remove();
+          },
+          error: function(error) {
+            console.error('Error submitting review:', error);
+          }
+        });
+      }
+      return false;
+    });
+  });
+</script>
 {% else %}
 <h1 class="card-text d-flex justify-content-center align-items-center m-3">
   Товар не найден

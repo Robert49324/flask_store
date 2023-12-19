@@ -1,0 +1,83 @@
+:focus {
+  outline: none;
+}
+
+.label {
+  display: block;
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+  justify-content: center;
+  display: flex;
+  font-size: 1.25em;
+}
+
+[contenteditable] {
+  margin-left: 20px;
+  margin-right: 20px;
+  border: 1px solid #000;
+  padding: 1em;
+  min-height: 2em;
+  font-size: 14px;
+  text-align: left;
+}
+
+.button {
+  border: 0;
+  padding: 0.5em;
+  margin: 10px;
+  background: #8073ce;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  float: right;
+}
+
+.stars {
+  letter-spacing: -4px;
+  display: inline-block;
+}
+
+.stars > * {
+  color: #ccc;
+  font-size: 2em;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 0.25em 0 0;
+  margin-top: 0;
+}
+
+.stars > *:hover {
+  text-shadow: 0 0 5px #8073ce;
+}
+
+.stars:hover > *, .stars > .selected {
+  color: #8073ce;
+}
+
+.stars > *:hover ~ * {
+  color: #ccc;
+}
+
+.submitted {
+ font-size: 1.5em; 
+ padding: 1em;
+ text-align: center;
+ font-weight: bold;
+ color: #fff;
+ background: #2D9F09;
+}
+
+.submitted::after {
+ content: '\0020\2713'; 
+}
+
+.errors p {
+  padding: 1em;
+  background: #cc0000;
+  color: #fff;
+}
+
+.you-rated {
+  margin-top: 0.125em;
+}
