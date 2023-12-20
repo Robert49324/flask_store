@@ -1,2 +1,2 @@
 *.logs
-database.db
+instance/database.db
