@@ -28,7 +28,7 @@ def sign_up():
         elif len(password1) < 5:
             flash("Пароль должен быть длинее 5 символов", category='error')
         else:
-            new_user = User(email=email,first_name=firstName,password=generate_password_hash(password1, method='sha256'))
+            new_user = User(email=email,first_name=firstName,password=password1)
             db.session.add(new_user)
             db.session.commit()
             login_user(new_user, remember=True)
@@ -46,7 +46,7 @@ def login():
         user = User.query.filter_by(email=email).first()
         
         if user:
-            if check_password_hash(user.password, password):
+            if user.password == password:
                 login_user(user, remember=True if remembrance == "on" else False)
                 flash("Вы вошли", category = "success")
                 return redirect(url_for("views.home"))
